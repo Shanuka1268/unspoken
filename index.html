@@ -3,25 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UNSPOKEN | The Universe of Secrets</title>
     
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <meta name="google-site-verification" content="rsLG0utGI28csCbuaUKM428xKqrBLmDJ6XMcOMhl_8w" />
-    <meta name="description" content="Unspoken: The Universe of Secrets. Share your unspoken feelings and watch them turn into stars in our digital galaxy.">
-    <meta name="keywords" content="Unspoken, secrets, wishes, stars, blue star, galaxy, feelings, anonymous messages">
+    <!-- 🚀 SEO: Primary Meta Tags 🚀 -->
+    <title>UNSPOKEN | The Universe of Secrets</title>
+    <meta name="title" content="UNSPOKEN | The Universe of Secrets">
+    <meta name="description" content="Share your deepest secrets anonymously to the universe. A digital sanctuary for thoughts too heavy to carry alone. Discover hidden stars and resonate with others.">
+    <meta name="keywords" content="unspoken, secrets, anonymous secrets, space, universe, share secrets, mental health, anonymous confession, unspoken secrets, hidden thoughts, sinhala secrets, sri lanka, share feelings anonymously, vent online, safe space, deep space, stars, constellation web app">
     <meta name="author" content="Shanuka Bimsara">
-    <meta property="og:title" content="UNSPOKEN | The Universe of Secrets">
-    <meta property="og:description" content="Your unspoken feelings belong in the stars. Join our universe today.">
-    <meta property="og:image" content="images/favicon.png"> <meta property="og:url" content="https://shanuka1268.github.io/unspoken/">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
 
+    <!-- 🌟 Open Graph / Facebook 🌟 -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shanuka1268.github.io/unspoken/">
+    <meta property="og:title" content="UNSPOKEN | The Universe of Secrets">
+    <meta property="og:description" content="Share your deepest secrets anonymously. A digital sanctuary for thoughts too heavy to carry alone.">
+    <meta property="og:image" content="https://i.postimg.cc/T1KqP91H/favicon.png">
+
+    <!-- 🐦 Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shanuka1268.github.io/unspoken/">
+    <meta property="twitter:title" content="UNSPOKEN | The Universe of Secrets">
+    <meta property="twitter:description" content="Share your deepest secrets anonymously. Discover hidden stars and resonate with others.">
+    <meta property="twitter:image" content="https://shanuka1268.github.io/unspoken/images/favicon.png">
+
+    <!-- Web App Manifest -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#020204">
+    
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="apple-touch-icon" href="./images/favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
+    <!-- PayHere SDK -->
     <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
+    <!-- 🛡️ ANTI-THEFT SCRIPT (DOMAIN LOCK) 🛡️ -->
+    <script>
+        const allowedDomains = [ "shanuka1268.github.io", "unspoken-dca2f.web.app", "unspoken-dca2f.firebaseapp.com", "localhost", "127.0.0.1" ];
+        const currentDomain = window.location.hostname;
+        if (!allowedDomains.some(domain => currentDomain.includes(domain))) {
+            document.addEventListener("DOMContentLoaded", () => {
+                document.body.innerHTML = `<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; background-color: #000; color: #fff; font-family: monospace; text-align: center; flex-direction: column;"><h1 style="color: #ff4757; font-size: 3rem; margin-bottom: 10px;">⚠️ ACCESS DENIED</h1><p style="font-size: 1.5rem; letter-spacing: 2px;">This Code Cannot Be Copied</p><p style="color: #666; margin-top: 20px; font-size: 0.9rem;">&copy; Copyright Shanuka Bimsara. All rights reserved.</p></div>`;
+                throw new Error("Unauthorized Domain Execution Halted.");
+            });
+        }
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) { return false; }
+        }
+    </script>
 
     <style>
         :root {
@@ -42,128 +80,86 @@
         #cosmos { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; cursor: crosshair; }
         #app-ui { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; display: flex; flex-direction: column; }
 
-        .glass {
-            background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); pointer-events: auto;
-        }
-
-        .screen {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; visibility: hidden; transform: scale(1.05);
-        }
+        .glass { background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); pointer-events: auto; }
+        .screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; visibility: hidden; transform: scale(1.05); }
         .screen.active { opacity: 1; visibility: visible; transform: scale(1); }
 
-        .auth-box { padding: 40px; border-radius: 24px; width: 90%; max-width: 400px; text-align: center; }
-        .brand { font-family: 'Cinzel', serif; font-size: 2.5rem; background: linear-gradient(135deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+        .auth-box { padding: 40px 20px; border-radius: 24px; width: 90%; max-width: 400px; text-align: center; }
+        .brand { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 2.5rem); background: linear-gradient(135deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
         .tagline { color: var(--text-dim); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 30px; text-transform: uppercase; }
 
-        .input-group input {
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 12px 0; color: white; font-size: 1.1rem; outline: none; transition: 0.3s; text-align: center; margin-bottom: 25px;
-        }
+        .input-group input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 12px 0; color: white; font-size: 1.1rem; outline: none; transition: 0.3s; text-align: center; margin-bottom: 25px; }
         .input-group input:focus { border-bottom-color: var(--primary); }
 
-        .btn-google {
-            background: #ffffff; color: #333; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.2); font-weight: bold; width: 100%; padding: 15px; border-radius: 8px; cursor: pointer; border: none; transition: 0.3s;
-        }
+        .btn-google { background: #ffffff; color: #333; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); font-weight: bold; width: 100%; padding: 15px; border-radius: 8px; cursor: pointer; border: none; transition: 0.3s; }
         .btn-google:hover { background: #f1f1f1; transform: translateY(-2px); }
 
-        .btn {
-            width: 100%; padding: 15px; border: none; border-radius: 8px; background: linear-gradient(45deg, var(--primary-dark), var(--primary)); color: white;
-            font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s;
-        }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 8px; background: linear-gradient(45deg, var(--primary-dark), var(--primary)); color: white; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(108,53,222,0.6); }
         .btn-gold { background: linear-gradient(45deg, #b8860b, #FFD700); color: #000; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
 
         #screen-intro { background-color: rgba(2, 2, 4, 0.95); z-index: 15; flex-direction: column; padding: 20px; text-align: center; }
-        .typing-text { font-size: 1.4rem; line-height: 2; font-weight: 600; color: #d400ff; text-shadow: 0 0 10px #d400ff; min-height: 160px; }
+        .typing-text { font-size: clamp(1.2rem, 4vw, 1.4rem); line-height: 2; font-weight: 600; color: #d400ff; text-shadow: 0 0 10px #d400ff; min-height: 160px; }
         .cursor { display: inline-block; width: 3px; height: 1.4rem; background-color: #d400ff; animation: blink 0.8s infinite; margin-left: 5px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         #screen-dashboard { align-items: flex-start; padding: 20px; }
         .top-nav { width: 100%; display: flex; justify-content: space-between; align-items: center; pointer-events: auto; }
-        .nav-logo { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-logo { font-family: 'Cinzel', serif; font-size: clamp(1rem, 3vw, 1.2rem); letter-spacing: 2px; }
         .controls { display: flex; gap: 15px; align-items: center; }
         
         .icon-btn { background: transparent; border: none; color: var(--text-main); font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
         .icon-btn:hover { color: var(--premium-gold); transform: scale(1.1); }
 
-        /* User Avatar Circle */
-        .avatar-circle {
-            width: 38px; height: 38px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white; display: flex; justify-content: center; align-items: center;
-            font-weight: bold; font-size: 1.2rem; font-family: 'Cinzel', serif;
-            box-shadow: 0 0 10px rgba(160, 114, 255, 0.5); border: 2px solid rgba(255,255,255,0.2);
-            cursor: pointer; transition: 0.3s;
-        }
+        .avatar-circle { width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 1.2rem; font-family: 'Cinzel', serif; box-shadow: 0 0 10px rgba(160, 114, 255, 0.5); border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s; }
         .avatar-circle:hover { transform: scale(1.1); }
-        .avatar-gold {
-            background: linear-gradient(135deg, #FFD700, #b8860b);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); color: black; border-color: #fff;
-        }
+        .avatar-gold { background: linear-gradient(135deg, #FFD700, #b8860b); box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); color: black; border-color: #fff; }
 
-        .hud-center { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: auto; }
-        
-        /* Privacy Text */
-        .privacy-text {
-            font-size: 0.75rem; color: #00d2ff; letter-spacing: 1px; 
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); text-transform: uppercase;
-        }
+        .hud-center { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: auto; width: 100%; }
+        .privacy-text { font-size: 0.7rem; color: #00d2ff; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); text-transform: uppercase; }
 
-        /* Footer Links */
-        .footer-nav {
-            position: absolute; bottom: 15px; width: 100%; text-align: center;
-            font-size: 0.75rem; color: rgba(255,255,255,0.4); pointer-events: auto; z-index: 10;
-        }
-        .footer-nav span { cursor: pointer; transition: 0.3s; margin: 0 8px; border-bottom: 1px solid transparent; }
+        .footer-nav { position: absolute; bottom: 15px; width: 100%; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.4); pointer-events: auto; z-index: 10; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 0 10px; }
+        .footer-nav span { cursor: pointer; transition: 0.3s; border-bottom: 1px solid transparent; }
         .footer-nav span:hover { color: var(--primary); border-bottom: 1px solid var(--primary); }
 
-        /* Modals */
-        .modal {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 450px; padding: 30px; border-radius: 20px;
-            opacity: 0; visibility: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 100;
-            display: flex; flex-direction: column; max-height: 85vh;
-        }
+        .modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 90%; max-width: 400px; padding: 25px 20px; border-radius: 20px; opacity: 0; visibility: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 100; display: flex; flex-direction: column; max-height: 85vh; }
         .modal.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
         
-        .modal textarea {
-            width: 100%; height: 100px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px; padding: 15px; color: white; font-size: 1rem; resize: none; outline: none;
-            font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; transition: 0.3s;
-        }
+        .modal textarea { width: 100%; height: 100px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; color: white; font-size: 1rem; resize: none; outline: none; font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; transition: 0.3s; }
         .modal textarea:focus { border-color: var(--primary); box-shadow: inset 0 0 10px rgba(160,114,255,0.2); }
         .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 1.2rem; color: var(--text-dim); transition: 0.3s; }
         .close-modal:hover { color: #fff; transform: rotate(90deg); }
 
-        /* Info Pages Text */
-        .info-content {
-            font-size: 0.95rem; color: #ddd; line-height: 1.6; text-align: left;
-            overflow-y: auto; padding-right: 10px; max-height: 60vh;
-        }
-        .info-content h3 { color: var(--primary); margin-bottom: 10px; font-family: 'Cinzel', serif; }
+        .info-content { font-size: 0.9rem; color: #ddd; line-height: 1.5; text-align: left; overflow-y: auto; padding-right: 5px; max-height: 60vh; }
+        .info-content h3 { color: var(--primary); margin-bottom: 10px; font-family: 'Cinzel', serif; font-size: 1.1rem; }
 
         .see-comments-link { display: inline-block; color: var(--text-dim); font-size: 0.9rem; margin-top: 15px; cursor: pointer; border-bottom: 1px dashed var(--text-dim); padding-bottom: 2px; transition: 0.3s; }
         .see-comments-link:hover { color: var(--premium-gold); border-color: var(--premium-gold); }
 
-        .comments-container { flex: 1; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; margin-bottom: 15px; text-align: left; border: 1px solid rgba(255,255,255,0.05); max-height: 200px; }
+        .comments-container { flex: 1; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; margin-bottom: 15px; text-align: left; border: 1px solid rgba(255,255,255,0.05); max-height: 180px; }
         .comment-item { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .comment-author { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-bottom: 3px; }
         .comment-author.premium-user { color: var(--premium-gold); }
-        .comment-text { font-size: 0.9rem; color: #ddd; }
+        .comment-text { font-size: 0.85rem; color: #ddd; }
 
         .resonate-btn { color: #ff4757; font-size: 1.2rem; cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 8px; margin: 0 auto; transition: 0.3s; }
         .resonate-btn:hover { transform: scale(1.1); text-shadow: 0 0 15px rgba(255, 71, 87, 0.6); }
 
-        #toast { position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); background: var(--primary-dark); color: #fff; padding: 10px 20px; font-weight: 600; border-radius: 50px; font-size: 0.85rem; transition: 0.4s ease; opacity: 0; z-index: 200; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        #toast { position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); background: var(--primary-dark); color: #fff; padding: 10px 20px; font-weight: 600; border-radius: 50px; font-size: 0.85rem; transition: 0.4s ease; opacity: 0; z-index: 200; box-shadow: 0 5px 15px rgba(0,0,0,0.5); white-space: nowrap; }
         #toast.show { bottom: 20px; opacity: 1; }
         #loader { position: absolute; top: 10px; left: 10px; font-size: 0.8rem; color: var(--secret-color); z-index: 100; display: none;}
         
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+        #install-prompt { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; background: rgba(10, 10, 15, 0.95); border: 1px solid var(--primary); border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 300; box-shadow: 0 10px 30px rgba(160, 114, 255, 0.2); pointer-events: auto; }
+        #install-prompt.show { top: 20px; }
+        .prompt-text { font-size: 0.85rem; text-align: center; color: white;}
+        .prompt-btns { display: flex; gap: 10px; width: 100%; }
+        .prompt-btn { flex: 1; padding: 8px; border-radius: 5px; border: none; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+        .btn-install { background: var(--primary); color: #fff; }
+        .btn-cancel { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
@@ -172,9 +168,16 @@
 
     <canvas id="cosmos"></canvas>
 
+    <div id="install-prompt">
+        <div class="prompt-text">Install UNSPOKEN to your Home Screen for the best experience.</div>
+        <div class="prompt-btns">
+            <button class="prompt-btn btn-cancel" onclick="installApp.hidePrompt()">Cancel</button>
+            <button class="prompt-btn btn-install" onclick="installApp.install()">Install App</button>
+        </div>
+    </div>
+
     <div id="app-ui">
         
-        <!-- LOGIN SCREEN -->
         <div id="screen-login" class="screen">
             <div class="auth-box glass">
                 <h1 class="brand">Unspoken</h1>
@@ -191,34 +194,28 @@
             </div>
         </div>
 
-        <!-- TYPING INTRO -->
         <div id="screen-intro" class="screen">
-            <div style="max-width: 500px; text-align: center;">
+            <div style="max-width: 500px; text-align: center; padding: 0 20px;">
                 <span id="intro-text" class="typing-text"></span><span class="cursor"></span>
             </div>
         </div>
 
-        <!-- DASHBOARD -->
         <div id="screen-dashboard" class="screen">
             <div class="top-nav">
                 <div class="nav-logo">UNSPOKEN</div>
                 <div class="controls">
                     <button class="icon-btn" onclick="app.openPremiumModal()" title="Premium Membership"><i class="fa-solid fa-crown"></i></button>
-                    <!-- User Avatar (Click to Logout) -->
                     <div id="user-avatar" class="avatar-circle" onclick="app.showLogoutConfirm()" title="Sign Out">?</div>
                 </div>
             </div>
 
             <div class="hud-center">
-                <!-- Privacy Text -->
                 <div class="privacy-text"><i class="fa-solid fa-shield-halved"></i> We protect your privacy</div>
-                
                 <button class="btn glass" style="width: max-content; padding: 12px 30px; border-radius: 50px; font-size: 0.95rem; white-space: nowrap;" onclick="app.openWriteModal()">
                     <i class="fa-solid fa-feather-pointed" style="margin-right: 8px;"></i> Whisper a Secret
                 </button>
             </div>
 
-            <!-- Footer Navigation -->
             <div class="footer-nav">
                 <span onclick="app.openPage('about')">About Us</span> • 
                 <span onclick="app.openPage('contact')">Contact Us</span> • 
@@ -226,15 +223,13 @@
             </div>
         </div>
 
-        <!-- WRITE MODAL -->
         <div id="modal-write" class="modal glass">
             <i class="fa-solid fa-xmark close-modal" onclick="app.closeModals()"></i>
-            <h3 style="margin-bottom: 15px; font-weight: 400; color: var(--primary); font-size: 1.1rem;">Release your burden...</h3>
+            <h3 style="margin-bottom: 15px; font-weight: 400; color: var(--primary); font-size: 1.1rem; text-align: center;">Release your burden...</h3>
             <textarea id="secretInput" placeholder="I pretend I'm fine, but actually..."></textarea>
             <button class="btn" onclick="app.submitSecret()">Release to Space ✨</button>
         </div>
 
-        <!-- READ MODAL -->
         <div id="modal-read" class="modal glass" style="text-align: center;">
             <i class="fa-solid fa-xmark close-modal" onclick="app.closeModals()"></i>
             <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-dim); font-size: 0.8rem;">
@@ -242,7 +237,7 @@
                 <span id="read-date">Just now</span>
             </div>
             
-            <p id="read-content" style="font-size: 1.1rem; line-height: 1.4; font-style: italic; margin-bottom: 15px; color: #00d2ff;">"This is a secret..."</p>
+            <p id="read-content" style="font-size: 1.05rem; line-height: 1.4; font-style: italic; margin-bottom: 15px; color: #00d2ff;">"This is a secret..."</p>
             
             <button class="resonate-btn" onclick="app.resonate()">
                 <i class="fa-solid fa-heart"></i> 
@@ -262,11 +257,10 @@
             </div>
         </div>
 
-        <!-- PREMIUM MODAL (PAYHERE) -->
         <div id="modal-premium" class="modal glass" style="border: 1px solid var(--premium-gold);">
             <i class="fa-solid fa-xmark close-modal" onclick="app.closeModals()"></i>
-            <h2 style="font-family: 'Cinzel', serif; color: var(--premium-gold); margin-bottom: 5px; text-align: center;">UNSPOKEN PREMIUM</h2>
-            <ul style="text-align: left; list-style: none; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.8;">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--premium-gold); margin-bottom: 5px; text-align: center; font-size: 1.5rem;">UNSPOKEN PREMIUM</h2>
+            <ul style="text-align: left; list-style: none; margin-bottom: 25px; font-size: 0.9rem; line-height: 1.8;">
                 <li><i class="fa-solid fa-unlock" style="color: var(--premium-gold); margin-right: 10px;"></i> Read hidden comments</li>
                 <li><i class="fa-solid fa-pen-nib" style="color: var(--premium-gold); margin-right: 10px;"></i> Leave anonymous comments</li>
                 <li><i class="fa-solid fa-crown" style="color: var(--premium-gold); margin-right: 10px;"></i> Valid for exactly 30 Days</li>
@@ -275,17 +269,15 @@
             <button class="btn btn-gold" onclick="app.startPayHerePayment()">Pay via PayHere</button>
         </div>
 
-        <!-- LOGOUT CONFIRMATION MODAL -->
         <div id="modal-logout" class="modal glass" style="text-align: center;">
-            <h3 style="color: #ff4757; font-family: 'Cinzel', serif; margin-bottom: 10px;">Leave the Void?</h3>
+            <h3 style="color: #ff4757; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.3rem;">Leave the Void?</h3>
             <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 25px;">Are you sure you want to disconnect your soul from the universe?</p>
-            <div style="display: flex; gap: 15px;">
-                <button class="btn" style="background: transparent; border: 1px solid #fff;" onclick="app.closeModals()">Cancel</button>
-                <button class="btn" style="background: #ff4757; box-shadow: 0 0 15px rgba(255,71,87,0.4);" onclick="app.confirmLogout()">Yes, Sign Out</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn" style="background: transparent; border: 1px solid #fff; font-size: 0.85rem;" onclick="app.closeModals()">Cancel</button>
+                <button class="btn" style="background: #ff4757; box-shadow: 0 0 15px rgba(255,71,87,0.4); font-size: 0.85rem;" onclick="app.confirmLogout()">Yes, Sign Out</button>
             </div>
         </div>
 
-        <!-- INFO PAGES MODALS -->
         <div id="modal-info" class="modal glass">
             <i class="fa-solid fa-xmark close-modal" onclick="app.closeModals()"></i>
             <div class="info-content" id="info-box"></div>
@@ -300,7 +292,7 @@
         // 🔥 1. YOUR REAL FIREBASE CONFIGURATION
         // ==========================================
         const firebaseConfig = {
-            apiKey: "AIzaSyBkg4FkC8QJ2kJVJnRt7pSHHfYtCEy5RxU", 
+            apiKey: "AIzaSyBkg4FkC8QJ2kJVJnRt7pSHHfYtCEy5RxU",
             authDomain: "unspoken-dca2f.firebaseapp.com",
             projectId: "unspoken-dca2f",
             storageBucket: "unspoken-dca2f.firebasestorage.app",
@@ -313,27 +305,23 @@
         const db = firebase.firestore();
         const provider = new firebase.auth.GoogleAuthProvider();
 
-        // ==========================================
-        // 💰 2. PAYHERE SETUP
-        // ==========================================
-        const PAYHERE_MERCHANT_ID = "121XXXX"; // Replace with your PayHere ID
-
+        const PAYHERE_MERCHANT_ID = "121XXXX"; 
         payhere.onCompleted = function onCompleted(orderId) { app.grantPremiumAccess(); };
         payhere.onDismissed = function onDismissed() { app.showToast("Payment window closed."); };
         payhere.onError = function onError(error) { app.showToast("Payment Error: " + error); };
 
         // ==========================================
-        // 🌟 3. 3D UNIVERSE & STAR ENGINE
+        // 🌟 2. UNIVERSE ENGINE
         // ==========================================
         let globalSecrets = [];
         const canvas = document.getElementById('cosmos');
         const ctx = canvas.getContext('2d');
-        let width, height; let particles = []; let shootingStars = [];
+        let width, height; let particles = []; let shootingStars = []; let ascendingStars = [];
         let camera = { x: 0, y: 0 }; let isDragging = false; let startDrag = { x: 0, y: 0 };
         
-        // ADDED WASD KEY SUPPORT + ARROW KEYS
         const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false, KeyW: false, KeyS: false, KeyA: false, KeyD: false };
         let searchX = -1000, searchY = -1000;
+        let universeScale = 2.5; 
 
         function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize); resize();
@@ -346,17 +334,18 @@
                     secretData.id = doc.id; 
                     globalSecrets.push(secretData);
                 });
+                universeScale = 2.5 + (globalSecrets.length * 0.02); 
                 initUniverse(); 
             });
         }
 
         class StarParticle {
             constructor(isSecret = false, secretData = null) {
-                this.x = (Math.random() - 0.5) * width * 2.5;
-                this.y = (Math.random() - 0.5) * height * 2.5;
+                this.x = (Math.random() - 0.5) * width * universeScale;
+                this.y = (Math.random() - 0.5) * height * universeScale;
                 this.z = Math.random() * 2 + 0.5; 
                 this.isSecret = isSecret; this.secretData = secretData;
-                this.isNode = !isSecret && Math.random() > 0.95;
+                this.isNode = !isSecret && Math.random() > 0.85;
                 
                 if(this.isNode) { this.baseSize = Math.random() * 2 + 1; this.color = '#FFD700'; } 
                 else if(this.isSecret) { this.baseSize = 2; this.color = 'rgba(0, 190, 255, 0.8)'; this.pulse = Math.random() * Math.PI; } 
@@ -402,9 +391,20 @@
             }
         }
 
+        class AscendingStar {
+            constructor(x, y) { this.x = x; this.y = y; this.size = 5; this.speedY = 2; this.alpha = 1; }
+            update() { this.y -= this.speedY; this.speedY += 0.2; this.size -= 0.04; this.alpha -= 0.015; }
+            draw() {
+                if(this.alpha <= 0) return;
+                ctx.beginPath(); ctx.arc(this.x, this.y, Math.max(0, this.size), 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 190, 255, ${this.alpha})`; ctx.shadowBlur = 25; ctx.shadowColor = '#00d2ff'; ctx.fill(); ctx.shadowBlur = 0;
+            }
+        }
+
         function initUniverse() {
-            particles = []; shootingStars = [];
-            for(let i=0; i<1500; i++) particles.push(new StarParticle(false));
+            particles = []; shootingStars = []; ascendingStars = [];
+            let bgStars = Math.floor(3000 * (universeScale / 2.5)); 
+            for(let i=0; i<bgStars; i++) particles.push(new StarParticle(false));
             for(let i=0; i<3; i++) shootingStars.push(new ShootingStar());
             globalSecrets.forEach(sec => particles.push(new StarParticle(true, sec)));
         }
@@ -416,7 +416,7 @@
                 for(let j=i+1; j<nodes.length; j++) {
                     let dist = Math.hypot(nodes[i].screenX - nodes[j].screenX, nodes[i].screenY - nodes[j].screenY);
                     if(dist < 180) {
-                        let opacity = 1 - (dist / 180); ctx.strokeStyle = `rgba(255, 215, 0, ${opacity * 0.3})`;
+                        let opacity = 1 - (dist / 180); ctx.strokeStyle = `rgba(255, 215, 0, ${opacity * 0.4})`;
                         ctx.beginPath(); ctx.moveTo(nodes[i].screenX, nodes[i].screenY); ctx.lineTo(nodes[j].screenX, nodes[j].screenY); ctx.stroke();
                     }
                 }
@@ -424,7 +424,6 @@
         }
 
         function render() {
-            // FIXED ARROW KEYS BUG: Increased Speed & Added WASD support
             let panSpeed = 12; 
             if(keys.ArrowUp || keys.KeyW) camera.y -= panSpeed; 
             if(keys.ArrowDown || keys.KeyS) camera.y += panSpeed;
@@ -432,20 +431,25 @@
             if(keys.ArrowRight || keys.KeyD) camera.x += panSpeed;
             
             ctx.fillStyle = 'rgba(2, 2, 4, 0.4)'; ctx.fillRect(0, 0, width, height);
-            particles.forEach(p => p.draw()); drawConstellations(); shootingStars.forEach(s => { s.update(); s.draw(); });
+            
+            let isHoveringSecret = false;
+            particles.forEach(p => { 
+                p.draw(); 
+                if(p.isSecret && p.screenX && Math.hypot(p.screenX - searchX, p.screenY - searchY) < p.currentSize + 25) {
+                    isHoveringSecret = true;
+                }
+            });
+            canvas.style.cursor = isHoveringSecret ? 'pointer' : 'crosshair';
+
+            drawConstellations(); shootingStars.forEach(s => { s.update(); s.draw(); });
+            ascendingStars.forEach((s, index) => { s.update(); s.draw(); if(s.alpha <= 0) ascendingStars.splice(index, 1); });
+
             requestAnimationFrame(render);
         }
         render();
 
-        // 🟢 KEYBOARD FIX: Ignore keypress if user is typing inside an input/textarea
-        window.addEventListener('keydown', e => { 
-            if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-            if(keys.hasOwnProperty(e.code)) keys[e.code] = true; 
-        });
-        window.addEventListener('keyup', e => { 
-            if(keys.hasOwnProperty(e.code)) keys[e.code] = false; 
-        });
-
+        window.addEventListener('keydown', e => { if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return; if(keys.hasOwnProperty(e.code)) keys[e.code] = true; });
+        window.addEventListener('keyup', e => { if(keys.hasOwnProperty(e.code)) keys[e.code] = false; });
         window.addEventListener('mousemove', e => { searchX = e.clientX; searchY = e.clientY; if(isDragging) { camera.x -= (searchX - startDrag.x) * 0.6; camera.y -= (searchY - startDrag.y) * 0.6; startDrag.x = searchX; startDrag.y = searchY; }});
         window.addEventListener('mousedown', e => { isDragging = true; startDrag.x = e.clientX; startDrag.y = e.clientY; });
         window.addEventListener('mouseup', () => isDragging = false);
@@ -462,20 +466,30 @@
             }
         });
 
-        // ==========================================
-        // 🚀 4. CORE APPLICATION LOGIC 
-        // ==========================================
+        const installApp = {
+            deferredPrompt: null, timer: null,
+            init() {
+                if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) return; 
+                window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); this.deferredPrompt = e; });
+                this.timer = setInterval(() => { document.getElementById('install-prompt').classList.add('show'); }, 120000); 
+                setTimeout(() => { document.getElementById('install-prompt').classList.add('show'); }, 10000);
+            },
+            hidePrompt() { document.getElementById('install-prompt').classList.remove('show'); },
+            async install() {
+                this.hidePrompt();
+                if (this.deferredPrompt) {
+                    this.deferredPrompt.prompt();
+                    const { outcome } = await this.deferredPrompt.userChoice;
+                    if (outcome === 'accepted') clearInterval(this.timer);
+                    this.deferredPrompt = null;
+                } else { app.showToast("To install: Tap 'Share' and select 'Add to Home Screen'"); }
+            }
+        };
+
         const app = {
             currentUserAlias: null, currentUserEmail: null, isPremium: false, expiryDate: null, uid: null, currentSecretRead: null,
-            
-            showToast(msg) {
-                const toast = document.getElementById('toast'); toast.innerText = msg; toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 3000);
-            },
-            switchScreen(screenId) {
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                document.getElementById(screenId).classList.add('active');
-            },
+            showToast(msg) { const toast = document.getElementById('toast'); toast.innerText = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); },
+            switchScreen(screenId) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(screenId).classList.add('active'); },
 
             initAuth() {
                 document.getElementById('loader').style.display = 'block';
@@ -495,7 +509,6 @@
                 const alias = document.getElementById('alias').value.trim();
                 if(alias.length < 3) return this.showToast("Please enter an Alias first!");
                 this.currentUserAlias = alias;
-
                 auth.signInWithPopup(provider).then((result) => {
                     this.uid = result.user.uid; this.currentUserEmail = result.user.email;
                     this.loadUserData(this.uid, false); 
@@ -506,16 +519,13 @@
                 const userRef = db.collection('users').doc(uid);
                 userRef.get().then((doc) => {
                     if (doc.exists) {
-                        let data = doc.data();
-                        this.currentUserAlias = data.alias || "User"; 
-                        this.syncAppState(data);
+                        let data = doc.data(); this.currentUserAlias = data.alias || this.currentUserAlias || "User"; this.syncAppState(data);
                     } else {
                         const newData = { alias: this.currentUserAlias, email: this.currentUserEmail, isPremium: false, expiryDate: "Not Subscribed" };
                         userRef.set(newData); this.syncAppState(newData);
                     }
                     document.getElementById('loader').style.display = 'none';
-                    if(skipIntro) { this.switchScreen('screen-dashboard'); } 
-                    else { this.runTypingIntro(); }
+                    if(skipIntro) { this.switchScreen('screen-dashboard'); } else { this.runTypingIntro(); }
                 });
             },
 
@@ -529,58 +539,47 @@
             },
 
             updateUIAvatar() {
-                const avatar = document.getElementById('user-avatar');
-                if(!this.currentUserAlias) return;
+                const avatar = document.getElementById('user-avatar'); if(!this.currentUserAlias) return;
                 avatar.innerText = this.currentUserAlias.charAt(0).toUpperCase();
                 if(this.isPremium) avatar.classList.add('avatar-gold'); else avatar.classList.remove('avatar-gold');
             },
 
             startPayHerePayment() {
-                var payment = {
-                    "sandbox": true, 
-                    "merchant_id": PAYHERE_MERCHANT_ID, 
-                    "return_url": window.location.href, "cancel_url": window.location.href, "notify_url": "YOUR_SERVER_URL", 
-                    "order_id": "Premium_" + Date.now(), "items": "UNSPOKEN Premium", "amount": "500.00", "currency": "LKR",
-                    "first_name": this.currentUserAlias, "last_name": "", "email": this.currentUserEmail, "phone": "0000000000",
-                    "address": "LK", "city": "Colombo", "country": "Sri Lanka"
-                };
+                var payment = { "sandbox": true, "merchant_id": PAYHERE_MERCHANT_ID, "return_url": window.location.href, "cancel_url": window.location.href, "notify_url": "YOUR_SERVER_URL", "order_id": "Premium_" + Date.now(), "items": "UNSPOKEN Premium", "amount": "500.00", "currency": "LKR", "first_name": this.currentUserAlias || "User", "last_name": "", "email": this.currentUserEmail, "phone": "0000000000", "address": "LK", "city": "Colombo", "country": "Sri Lanka" };
                 payhere.startPayment(payment);
             },
 
             grantPremiumAccess() {
-                this.isPremium = true;
-                let expiry = new Date(); expiry.setDate(expiry.getDate() + 30);
-                this.expiryDate = expiry.toISOString().split('T')[0]; 
-                this.updateUserDatabase(); this.updateUIAvatar(); this.closeModals();
-                this.showToast(`Payment Successful! Valid until ${this.expiryDate} ✨`);
+                this.isPremium = true; let expiry = new Date(); expiry.setDate(expiry.getDate() + 30); this.expiryDate = expiry.toISOString().split('T')[0]; 
+                this.updateUserDatabase(); this.updateUIAvatar(); this.closeModals(); this.showToast(`Payment Successful! Valid until ${this.expiryDate} ✨`);
             },
 
-            updateUserDatabase() {
-                if(!this.uid) return;
-                db.collection('users').doc(this.uid).set({
-                    alias: this.currentUserAlias, email: this.currentUserEmail, isPremium: this.isPremium, expiryDate: this.expiryDate
-                }, { merge: true });
-            },
+            updateUserDatabase() { if(!this.uid) return; db.collection('users').doc(this.uid).set({ alias: this.currentUserAlias, email: this.currentUserEmail, isPremium: this.isPremium, expiryDate: this.expiryDate }, { merge: true }); },
 
             submitSecret() {
                 const input = document.getElementById('secretInput'); const text = input.value.trim();
                 if(text.length < 5) return this.showToast("Your secret is too short...");
-                const newSecret = { text: text, author_hidden: this.currentUserAlias, date: new Date().toLocaleDateString(), comments: [], resonateCount: 0 };
-                document.getElementById('loader').style.display = 'block';
+                
+                // IF NOT PREMIUM: HIDE COMMENTS (Premium Feature Lock)
+                const newSecret = { text: text, author_hidden: this.currentUserAlias || "Unknown", date: new Date().toLocaleDateString(), comments: [], resonateCount: 0 };
+                
+                document.getElementById('modal-write').classList.remove('active');
+                ascendingStars.push(new AscendingStar(width / 2, height / 2));
 
-                db.collection('secrets').add(newSecret).then((docRef) => {
-                    newSecret.id = docRef.id; globalSecrets.push(newSecret);
-                    let newStar = new StarParticle(true, newSecret); newStar.x = camera.x; newStar.y = camera.y; particles.push(newStar);
-                    input.value = ""; this.closeModals(); document.getElementById('loader').style.display = 'none';
-                    this.showToast("Your secret is now floating in the void ✨");
-                });
+                setTimeout(() => {
+                    db.collection('secrets').add(newSecret).then((docRef) => {
+                        newSecret.id = docRef.id; globalSecrets.push(newSecret);
+                        universeScale += 0.015; 
+                        let newStar = new StarParticle(true, newSecret); newStar.x = camera.x; newStar.y = camera.y; particles.push(newStar);
+                        input.value = ""; this.showToast("Your secret was released into the void ✨");
+                    });
+                }, 1500); 
             },
 
             submitComment() {
                 if(!this.isPremium) return this.openPremiumModal();
-                const input = document.getElementById('commentInput'); const text = input.value.trim();
-                if(text.length < 2) return;
-                const newComment = { author_hidden: this.currentUserAlias, text: text, isPremium: true };
+                const input = document.getElementById('commentInput'); const text = input.value.trim(); if(text.length < 2) return;
+                const newComment = { author_hidden: this.currentUserAlias || "Unknown", text: text, isPremium: true };
                 document.getElementById('loader').style.display = 'block';
 
                 db.collection('secrets').doc(this.currentSecretRead.id).update({ comments: firebase.firestore.FieldValue.arrayUnion(newComment) }).then(() => {
@@ -597,8 +596,7 @@
                 const secretId = this.currentSecretRead.id;
                 this.currentSecretRead.resonateCount = (this.currentSecretRead.resonateCount || 0) + 1;
                 document.getElementById('resonate-count').innerText = this.currentSecretRead.resonateCount;
-                db.collection('secrets').doc(secretId).update({ resonateCount: firebase.firestore.FieldValue.increment(1) })
-                .then(() => { this.showToast("You resonated with this feeling 🤍"); });
+                db.collection('secrets').doc(secretId).update({ resonateCount: firebase.firestore.FieldValue.increment(1) }).then(() => { this.showToast("You resonated with this feeling 🤍"); });
             },
 
             async runTypingIntro() {
@@ -609,22 +607,11 @@
                 this.switchScreen('screen-dashboard');
             },
             typeString(elem, str) {
-                return new Promise(resolve => {
-                    let i = 0; elem.innerHTML = '';
-                    let interval = setInterval(() => {
-                        if (str.charAt(i) === '\n') elem.innerHTML += '<br>'; else elem.innerHTML += str.charAt(i);
-                        i++; if (i === str.length) { clearInterval(interval); resolve(); }
-                    }, 40); 
-                });
+                return new Promise(resolve => { let i = 0; elem.innerHTML = ''; let interval = setInterval(() => { if (str.charAt(i) === '\n') elem.innerHTML += '<br>'; else elem.innerHTML += str.charAt(i); i++; if (i === str.length) { clearInterval(interval); resolve(); } }, 40); });
             },
             
             showLogoutConfirm() { this.closeModals(); document.getElementById('modal-logout').classList.add('active'); },
-            confirmLogout() {
-                auth.signOut().then(() => {
-                    this.currentUserAlias = null; this.uid = null; this.isPremium = false;
-                    this.closeModals(); this.switchScreen('screen-login'); camera = { x: 0, y: 0 };
-                });
-            },
+            confirmLogout() { auth.signOut().then(() => { this.currentUserAlias = null; this.uid = null; this.isPremium = false; this.closeModals(); this.switchScreen('screen-login'); camera = { x: 0, y: 0 }; }); },
             
             closeModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); },
             openWriteModal() { this.closeModals(); document.getElementById('modal-write').classList.add('active'); },
@@ -636,16 +623,18 @@
                 document.getElementById('read-author').innerHTML = `<i class="fa-solid fa-user-astronaut"></i> Someone`;
                 document.getElementById('read-date').innerText = data.date;
                 document.getElementById('resonate-count').innerText = data.resonateCount || 0;
-                document.getElementById('see-comments-action').style.display = 'block';
+                
+                // PREMIUM LOCK CHECK - HIDE COMMENTS UNLESS PREMIUM
+                document.getElementById('see-comments-action').style.display = 'block'; 
                 document.getElementById('comments-wrapper').style.display = 'none';
+                
                 document.getElementById('modal-read').classList.add('active');
             },
 
             handleSeeComments() { if (!this.isPremium) { this.openPremiumModal(); } else { this.revealComments(); } },
 
             revealComments() {
-                document.getElementById('see-comments-action').style.display = 'none';
-                document.getElementById('comments-wrapper').style.display = 'flex';
+                document.getElementById('see-comments-action').style.display = 'none'; document.getElementById('comments-wrapper').style.display = 'flex';
                 const commentsBox = document.getElementById('comments-box'); commentsBox.innerHTML = '';
                 if(this.currentSecretRead.comments && this.currentSecretRead.comments.length > 0) {
                     this.currentSecretRead.comments.forEach(c => {
@@ -658,20 +647,16 @@
             },
 
             openPage(page) {
-                this.closeModals();
-                const box = document.getElementById('info-box');
-                if(page === 'about') {
-                    box.innerHTML = `<h3>About UNSPOKEN</h3><p>UNSPOKEN is a digital sanctuary for thoughts that are too heavy to carry alone. It is an infinite canvas of stars, where every light represents a real human secret, fear, or dream.</p><br><p>We built this universe to prove that even in our darkest moments, we are never truly alone.</p>`;
-                } else if(page === 'contact') {
-                    box.innerHTML = `<h3>Contact the Creators</h3><p>If you have questions, feedback, or need to report a star in the void, reach out to our team.</p><br><p><i class="fa-solid fa-envelope" style="color:var(--primary);"></i> <b>hello@unspoken.com</b></p><p><i class="fa-solid fa-globe" style="color:var(--primary);"></i> <b>www.unspoken.com</b></p>`;
-                } else if(page === 'privacy') {
-                    box.innerHTML = `<h3>Privacy Policy</h3><p>Your privacy is our highest priority.</p><br><ul><li><b>Anonymity:</b> The alias you provide during login is strictly kept private in our secure database and is never shown publicly to other users.</li><br><li><b>Data Security:</b> Your secrets are protected and stored securely. We do not sell your data.</li><br><li><b>Payments:</b> Payments are handled safely by PayHere. We do not store your credit card information.</li></ul>`;
-                }
+                this.closeModals(); const box = document.getElementById('info-box');
+                if(page === 'about') { box.innerHTML = `<h3>About UNSPOKEN</h3><p>UNSPOKEN is a digital sanctuary for thoughts that are too heavy to carry alone. It is an infinite canvas of stars, where every light represents a real human secret, fear, or dream.</p><br><p>We built this universe to prove that even in our darkest moments, we are never truly alone.</p>`; } 
+                else if(page === 'contact') { box.innerHTML = `<h3>Contact the Creators</h3><p>If you have questions, feedback, or need to report a star in the void, reach out to our team.</p><br><p><i class="fa-solid fa-envelope" style="color:var(--primary);"></i> <b>hello@unspoken.com</b></p><p><i class="fa-solid fa-globe" style="color:var(--primary);"></i> <b>www.unspoken.com</b></p>`; } 
+                else if(page === 'privacy') { box.innerHTML = `<h3>Privacy Policy</h3><p>Your privacy is our highest priority.</p><br><ul><li><b>Anonymity:</b> The alias you provide during login is strictly kept private in our secure database and is never shown publicly to other users.</li><br><li><b>Data Security:</b> Your secrets are protected and stored securely. We do not sell your data.</li><br><li><b>Payments:</b> Payments are handled safely by PayHere. We do not store your credit card information.</li></ul>`; }
                 document.getElementById('modal-info').classList.add('active');
             }
         };
 
         app.initAuth();
+        installApp.init(); 
     </script>
 </body>
 </html>
